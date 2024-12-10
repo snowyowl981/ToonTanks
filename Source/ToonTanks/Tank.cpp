@@ -44,8 +44,6 @@ void ATank::BeginPlay()
 	//* GetController에서 반환되는 AController 값을 APlayerController로 캐스팅하는 과정.
 	//? (APlayerController에 필요한 함수가 존재하기 때문)
 	TankPlayerController = Cast<APlayerController>(GetController());
-
-	
 }
 
 // Called every frame
@@ -80,6 +78,7 @@ void ATank::HandleDestruction()
 	// 틱 함수 비활성화
 	SetActorTickEnabled(false);
 
+	bAlive = false;
 }
 
 // 탱크 전, 후진 함수

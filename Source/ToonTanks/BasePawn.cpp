@@ -86,8 +86,8 @@ void ABasePawn::Fire()
 	// 	3.0f
 	// );
 
-	// auto == var
-	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, Rotation);
+	// 발사체 스폰 로직
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, Rotation);
 	
 	// 발사체를 생성한 폰으로 소유자 지정
 	Projectile->SetOwner(this);

@@ -40,8 +40,13 @@ void ATower::HandleDestruction()
 // 발사 타이머 체크 함수
 void ATower::CheckFireCondition()
 {
-    // 사정거리 내에 있다면 터렛이 탱크를 향해 발사
-    if (TargetInSight())
+    if (Tank == nullptr)
+    {
+        return;
+    }
+
+    // 탱크가 파괴되지 않고, 사정거리 내에 있을 때 터렛이 탱크를 향해 발사
+    if (TargetInSight() && Tank->bAlive)
     {
 	    Fire();
     }

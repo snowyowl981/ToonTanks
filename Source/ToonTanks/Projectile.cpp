@@ -55,6 +55,7 @@ void AProjectile::Tick(float DeltaTime)
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpluse, const FHitResult& Hit)
 {
 	// 소유자 호출, auto == AActor*
+	//! auto는 C#의 var와 비슷하지만 지양 할 것.
 	auto MyOwner = GetOwner();
 
 	// 소유자가 nullptr 체크 및 nullptr 인 경우 그대로 종료
@@ -66,10 +67,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	}
 
 	// 대미지를 가한 액터의 컨트롤러 호출
-	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+	AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
 
 	// UDamageType의 C++ 클래스
-	auto DamageTypeClass = UDamageType::StaticClass();
+	UClass* DamageTypeClass = UDamageType::StaticClass();
 
 	// 발사체 nullptr 체크, 발사체가 자기 자신 및 소유자에게 대미지를 주는 것 예외처리
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
