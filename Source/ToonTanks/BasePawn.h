@@ -84,4 +84,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class USoundBase* DeathSound;
 
+	// 폰 파괴 시 카메라 흔들림 효과
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
+
 };

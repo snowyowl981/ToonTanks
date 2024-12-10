@@ -47,6 +47,12 @@ void ABasePawn::HandleDestruction()
 		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
 	}
 
+	// 폰 파괴 시 카메라 흔들림 효과
+	if (DeathCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
+	}
+
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)

@@ -35,20 +35,29 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpluse, const FHitResult& Hit);
 
+	// 대미지 변수
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = 50.0f;
 
+	// 발사체 충돌 효과
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* HitParticles;
 
+	// 발사체 연기 궤적
 	UPROPERTY(VisibleAnywhere, Category = "Combat")
 	class UParticleSystemComponent* ProjectileTrail;
 
+	// 발사 효과음
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	USoundBase* LaunchSound;
 	
+	// 발사체 충돌 효과음
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	USoundBase* HitSound;
+
+	// 발사체 충돌 시 카메라 흔들림 효과
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
 
 public:	
 	// Called every frame
